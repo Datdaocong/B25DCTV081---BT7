@@ -6,12 +6,22 @@ import "./App.css";
 function calculate(expr) {
   const numbers = expr.split(/[+\-*/]/).map(Number);
   const ops = expr.match(/[+\-*/]/g) || [];
+
+  for (let i = 0; i < ops.length; ) {
+    if (ops[i] === "*" || ops[i] === "/") {
+      numbers[i] =
+        ops[i] === "*" ? numbers[i] * numbers[i + 1] : numbers[i] / numbers[i + 1];
+      numbers.splice(i + 1, 1);
+      ops.splice(i, 1);
+    } else {
+      i++;
+    }
+  }
+
   let result = numbers[0];
   for (let i = 0; i < ops.length; i++) {
     if (ops[i] === "+") result += numbers[i + 1];
     if (ops[i] === "-") result -= numbers[i + 1];
-    if (ops[i] === "*") result *= numbers[i + 1];
-    if (ops[i] === "/") result /= numbers[i + 1];
   }
   return result;
 }
