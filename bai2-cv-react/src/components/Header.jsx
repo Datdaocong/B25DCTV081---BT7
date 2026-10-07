@@ -1,19 +1,11 @@
-export default function Header({ profile }) {
-  const words = profile.name.split(" ");
-  const initials = (words[0][0] + words[words.length - 1][0]).toUpperCase();
-
+export default function Header() {
   return (
-    <header className="header">
-      <p className="institute">Học viện Công nghệ Bưu chính Viễn thông (PTIT)</p>
-      <div className="avatar">{initials}</div>
-      <h1>{profile.name}</h1>
+    <div className="header">
+      <p className="school">HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG (PTIT)</p>
+      <h1>Đào Công Đạt</h1>
       <span className="badge">Đang học</span>
-      <p className="header-title">{profile.title}</p>
-      <ul className="contact">
-        {profile.contacts.map((c) => (
-          <li key={c}>{c}</li>
-        ))}
-      </ul>
-    </header>
+      <p>Sinh viên ngành Trí tuệ nhân tạo vạn vật (AIoT)</p>
+      <p>datdc.b25tv081@stu.ptit.edu.vn - 0398 658 782</p>
+    </div>
   );
 }
