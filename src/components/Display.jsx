@@ -1,7 +1,3 @@
 export default function Display({ expression }) {
-  return (
-    <div className="display">
-      <span className="display-text">{expression || "0"}</span>
-    </div>
-  );
+  return <div className="display">{expression || "0"}</div>;
 }
