@@ -10,8 +10,16 @@
 .header {
   background: linear-gradient(135deg, #b91c1c, #7f1d1d);
   color: #fff;
-  padding: 40px 40px 32px;
+  padding: 36px 40px 30px;
   text-align: center;
+}
+
+.institute {
+  margin: 0 0 18px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.85;
 }
 
 .avatar {
@@ -29,8 +37,19 @@
 }
 
 .header h1 {
-  margin: 0 0 6px;
+  margin: 0 0 10px;
   font-size: 30px;
+}
+
+.badge {
+  display: inline-block;
+  margin: 0 0 14px;
+  padding: 4px 16px;
+  border-radius: 99px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .header-title {
@@ -76,11 +95,31 @@
   color: #b91c1c;
 }
 
-.summary {
+.info-list {
   margin: 0;
-  line-height: 1.65;
-  color: #374151;
+}
+
+.info-row {
+  display: flex;
+  padding: 9px 0;
+  border-bottom: 1px dashed #eee;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-row dt {
+  width: 220px;
+  flex-shrink: 0;
+  color: #6b7280;
   font-size: 15px;
+}
+
+.info-row dd {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .skill-list {
@@ -161,40 +200,6 @@
   background: #fee2e2;
   color: #b91c1c;
   font-size: 12px;
-}
-
-.edu-row {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 12px;
-}
-
-.edu-row:last-child {
-  margin-bottom: 0;
-}
-
-.edu-time {
-  min-width: 110px;
-  color: #6b7280;
-  font-size: 14px;
-}
-
-.edu-row strong {
-  font-size: 15px;
-}
-
-.edu-row p {
-  margin: 2px 0 0;
-  color: #4b5563;
-  font-size: 14px;
-}
-
-.lang-list {
-  margin: 0;
-  padding-left: 20px;
-  color: #374151;
-  font-size: 14px;
-  line-height: 1.9;
 }
 
 .footer {

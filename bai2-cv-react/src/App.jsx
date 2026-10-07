@@ -1,9 +1,10 @@
 import Header from "./components/Header.jsx";
 import Section from "./components/Section.jsx";
+import InfoList from "./components/InfoList.jsx";
 import SkillList from "./components/SkillList.jsx";
 import ProjectList from "./components/ProjectList.jsx";
 import Footer from "./components/Footer.jsx";
-import { profile, skills, projects, education, languages } from "./data/cv.js";
+import { profile, basicInfo, studyInfo, skills, projects } from "./data/cv.js";
 import "./App.css";
 
 export default function App() {
@@ -12,8 +13,12 @@ export default function App() {
       <Header profile={profile} />
 
       <main className="page-main">
-        <Section title="Giới thiệu">
-          <p className="summary">{profile.summary}</p>
+        <Section title="Thông tin chung">
+          <InfoList items={basicInfo} />
+        </Section>
+
+        <Section title="Thông tin học vụ">
+          <InfoList items={studyInfo} />
         </Section>
 
         <Section title="Kỹ năng">
@@ -22,28 +27,6 @@ export default function App() {
 
         <Section title="Dự án">
           <ProjectList projects={projects} />
-        </Section>
-
-        <Section title="Học vấn">
-          {education.map((item) => (
-            <div className="edu-row" key={item.school}>
-              <span className="edu-time">{item.time}</span>
-              <div>
-                <strong>{item.school}</strong>
-                <p>{item.detail}</p>
-              </div>
-            </div>
-          ))}
-        </Section>
-
-        <Section title="Ngoại ngữ">
-          <ul className="lang-list">
-            {languages.map((lang) => (
-              <li key={lang.name}>
-                <strong>{lang.name}</strong> — {lang.level}
-              </li>
-            ))}
-          </ul>
         </Section>
       </main>
 
