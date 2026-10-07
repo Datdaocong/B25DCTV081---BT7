@@ -1,4 +1,3 @@
-// ProjectList – nhận mảng dự án qua props, mỗi dự án vẽ một thẻ
 export default function ProjectList({ projects }) {
   return (
     <div className="project-list">

@@ -12,8 +12,6 @@ export default function App() {
       <Header profile={profile} />
 
       <main className="page-main">
-        {/* Mỗi Section là một khung mục: title truyền qua props,
-            nội dung bên trong cặp thẻ truyền qua children */}
         <Section title="Giới thiệu">
           <p className="summary">{profile.summary}</p>
         </Section>

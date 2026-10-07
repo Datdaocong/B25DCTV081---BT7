@@ -1,4 +1,3 @@
-// Header – đầu trang CV: avatar chữ cái, họ tên, nghề nghiệp và liên hệ
 export default function Header({ profile }) {
   const words = profile.name.split(" ");
   const initials = (words[0][0] + words[words.length - 1][0]).toUpperCase();

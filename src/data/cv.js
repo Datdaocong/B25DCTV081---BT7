@@ -1,6 +1,3 @@
-// Dữ liệu CV gom về một file – App đọc và truyền xuống từng component qua props.
-// Muốn sửa CV chỉ cần sửa file này, không phải sửa component.
-
 export const profile = {
   name: "Đào Công Đạt",
   title: "Sinh viên Công nghệ Thông tin – Học viện Công nghệ Bưu chính Viễn thông (PTIT)",
@@ -11,7 +8,6 @@ export const profile = {
   contacts: ["datdc.b25tv081@stu.ptit.edu.vn", "Hà Nội, Việt Nam"],
 };
 
-// Mảng kỹ năng – truyền vào SkillList qua props
 export const skills = [
   { name: "HTML / CSS", level: 80 },
   { name: "JavaScript", level: 65 },
@@ -21,7 +17,6 @@ export const skills = [
   { name: "MySQL", level: 50 },
 ];
 
-// Mảng dự án – truyền vào ProjectList qua props
 export const projects = [
   {
     id: 1,
@@ -51,7 +46,6 @@ export const projects = [
   },
 ];
 
-// Mảng học vấn – render trực tiếp trong App làm nội dung children của Section
 export const education = [
   {
     time: "2025 – nay",
@@ -60,7 +54,6 @@ export const education = [
   },
 ];
 
-// Mảng ngoại ngữ – render trực tiếp trong App làm nội dung children của Section
 export const languages = [
   { name: "Tiếng Việt", level: "Bản ngữ" },
   { name: "Tiếng Anh", level: "Đọc hiểu tài liệu chuyên ngành" },

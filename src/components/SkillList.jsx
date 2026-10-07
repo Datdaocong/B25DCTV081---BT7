@@ -1,4 +1,3 @@
-// SkillList – nhận mảng kỹ năng qua props và vẽ thanh mức độ cho từng kỹ năng
 export default function SkillList({ skills }) {
   return (
     <ul className="skill-list">
