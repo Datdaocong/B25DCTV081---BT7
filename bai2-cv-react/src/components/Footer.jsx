@@ -1,4 +1,3 @@
-// Footer – chân trang CV
 export default function Footer({ name }) {
   return (
     <footer className="footer">

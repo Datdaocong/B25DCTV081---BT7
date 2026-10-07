@@ -7,7 +7,6 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* ===== Header ===== */
 .header {
   background: linear-gradient(135deg, #b91c1c, #7f1d1d);
   color: #fff;
@@ -56,7 +55,6 @@
   margin: 0 10px;
 }
 
-/* ===== Section ===== */
 .page-main {
   padding: 8px 40px 24px;
 }
@@ -78,34 +76,6 @@
   color: #b91c1c;
 }
 
-/* ===== Học vấn ===== */
-.edu-row {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 12px;
-}
-
-.edu-row:last-child {
-  margin-bottom: 0;
-}
-
-.edu-time {
-  min-width: 110px;
-  color: #6b7280;
-  font-size: 14px;
-}
-
-.edu-row strong {
-  font-size: 15px;
-}
-
-.edu-row p {
-  margin: 2px 0 0;
-  color: #4b5563;
-  font-size: 14px;
-}
-
-/* ===== Giới thiệu ===== */
 .summary {
   margin: 0;
   line-height: 1.65;
@@ -113,7 +83,6 @@
   font-size: 15px;
 }
 
-/* ===== Kỹ năng ===== */
 .skill-list {
   list-style: none;
   margin: 0;
@@ -147,7 +116,6 @@
   background: linear-gradient(90deg, #ef4444, #b91c1c);
 }
 
-/* ===== Dự án ===== */
 .project-list {
   display: grid;
   gap: 14px;
@@ -195,7 +163,32 @@
   font-size: 12px;
 }
 
-/* ===== Ngoại ngữ ===== */
+.edu-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.edu-row:last-child {
+  margin-bottom: 0;
+}
+
+.edu-time {
+  min-width: 110px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.edu-row strong {
+  font-size: 15px;
+}
+
+.edu-row p {
+  margin: 2px 0 0;
+  color: #4b5563;
+  font-size: 14px;
+}
+
 .lang-list {
   margin: 0;
   padding-left: 20px;
@@ -204,7 +197,6 @@
   line-height: 1.9;
 }
 
-/* ===== Footer ===== */
 .footer {
   padding: 18px;
   text-align: center;
