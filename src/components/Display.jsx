@@ -1,4 +1,3 @@
-// Display – màn hình máy tính: nhận biểu thức / kết quả qua props
 export default function Display({ expression }) {
   return (
     <div className="display">

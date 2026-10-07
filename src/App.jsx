@@ -4,7 +4,6 @@ import Button from "./components/Button.jsx";
 import { calculate } from "./calculate.js";
 import "./App.css";
 
-// Danh sách phím theo thứ tự trên bàn phím: nhãn, màu, số cột chiếm chỗ
 const KEYS = [
   { label: "C", color: "#e03131", span: 2 },
   { label: "Del", color: "#6b7280" },
@@ -26,15 +25,13 @@ const KEYS = [
 ];
 
 export default function App() {
-  // State lưu biểu thức hiện tại, ví dụ "7+8*2"
   const [expression, setExpression] = useState("");
 
   function handlePress(label) {
-    if (expression === "Lỗi" && label !== "C") return; // đang lỗi → chỉ C có tác dụng
+    if (expression === "Lỗi" && label !== "C") return;
     if (label === "C") return setExpression("");
     if (label === "Del") return setExpression(expression.slice(0, -1));
     if (label === "=") return setExpression(String(calculate(expression)));
-    // Không cho toán tử đứng đầu hay 2 toán tử liền nhau
     if ("+-*/".includes(label) && ("+-*/".includes(expression.at(-1)) || expression === ""))
       return;
     setExpression(expression + label);
