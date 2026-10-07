@@ -1,22 +1,10 @@
 import Header from "./components/Header.jsx";
 import Section from "./components/Section.jsx";
+import SkillList from "./components/SkillList.jsx";
+import ProjectList from "./components/ProjectList.jsx";
 import Footer from "./components/Footer.jsx";
+import { profile, skills, projects, education, languages } from "./data/cv.js";
 import "./App.css";
-
-// Dữ liệu tạm thời đặt trong App – commit sau sẽ tách ra file riêng
-const profile = {
-  name: "Đào Công Đạt",
-  title: "Sinh viên Công nghệ Thông tin – Học viện Công nghệ Bưu chính Viễn thông (PTIT)",
-  contacts: ["datdc.b25tv081@stu.ptit.edu.vn", "Hà Nội, Việt Nam"],
-};
-
-const education = [
-  {
-    time: "2025 – nay",
-    school: "Học viện Công nghệ Bưu chính Viễn thông (PTIT)",
-    detail: "Ngành Công nghệ Thông tin – lớp B25TV081",
-  },
-];
 
 export default function App() {
   return (
@@ -24,7 +12,20 @@ export default function App() {
       <Header profile={profile} />
 
       <main className="page-main">
-        {/* Section là khung chung – nội dung bên trong truyền qua children */}
+        {/* Mỗi Section là một khung mục: title truyền qua props,
+            nội dung bên trong cặp thẻ truyền qua children */}
+        <Section title="Giới thiệu">
+          <p className="summary">{profile.summary}</p>
+        </Section>
+
+        <Section title="Kỹ năng">
+          <SkillList skills={skills} />
+        </Section>
+
+        <Section title="Dự án">
+          <ProjectList projects={projects} />
+        </Section>
+
         <Section title="Học vấn">
           {education.map((item) => (
             <div className="edu-row" key={item.school}>
@@ -35,6 +36,16 @@ export default function App() {
               </div>
             </div>
           ))}
+        </Section>
+
+        <Section title="Ngoại ngữ">
+          <ul className="lang-list">
+            {languages.map((lang) => (
+              <li key={lang.name}>
+                <strong>{lang.name}</strong> — {lang.level}
+              </li>
+            ))}
+          </ul>
         </Section>
       </main>
 
