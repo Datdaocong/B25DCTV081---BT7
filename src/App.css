@@ -1,3 +1,9 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
+}
+
 .cv {
   max-width: 700px;
   margin: 30px auto;
