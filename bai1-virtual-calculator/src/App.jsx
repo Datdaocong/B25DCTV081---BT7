@@ -4,63 +4,40 @@ import Button from "./components/Button.jsx";
 import { calculate } from "./calculate.js";
 import "./App.css";
 
-// Màu của từng nhóm phím – truyền vào Button qua props
-const COLORS = {
-  number: "#2fb344", // chữ số
-  operator: "#1d7a3e", // + − × ÷
-  func: "#6b7280", // Del
-  clear: "#e03131", // C
-  equals: "#14532d", // =
-};
-
-// Bố cục bàn phím: nhãn hiển thị, màu và số cột chiếm chỗ của từng phím
+// Danh sách phím theo thứ tự trên bàn phím: nhãn, màu, số cột chiếm chỗ
 const KEYS = [
-  { label: "C", color: COLORS.clear, span: 2 },
-  { label: "Del", color: COLORS.func },
-  { label: "÷", color: COLORS.operator },
-  { label: "7", color: COLORS.number },
-  { label: "8", color: COLORS.number },
-  { label: "9", color: COLORS.number },
-  { label: "×", color: COLORS.operator },
-  { label: "4", color: COLORS.number },
-  { label: "5", color: COLORS.number },
-  { label: "6", color: COLORS.number },
-  { label: "−", color: COLORS.operator },
-  { label: "1", color: COLORS.number },
-  { label: "2", color: COLORS.number },
-  { label: "3", color: COLORS.number },
-  { label: "+", color: COLORS.operator },
-  { label: "0", color: COLORS.number, span: 2 },
-  { label: "=", color: COLORS.equals, span: 2 },
+  { label: "C", color: "#e03131", span: 2 },
+  { label: "Del", color: "#6b7280" },
+  { label: "/", color: "#1d7a3e" },
+  { label: "7", color: "#2fb344" },
+  { label: "8", color: "#2fb344" },
+  { label: "9", color: "#2fb344" },
+  { label: "*", color: "#1d7a3e" },
+  { label: "4", color: "#2fb344" },
+  { label: "5", color: "#2fb344" },
+  { label: "6", color: "#2fb344" },
+  { label: "-", color: "#1d7a3e" },
+  { label: "1", color: "#2fb344" },
+  { label: "2", color: "#2fb344" },
+  { label: "3", color: "#2fb344" },
+  { label: "+", color: "#1d7a3e" },
+  { label: "0", color: "#2fb344", span: 2 },
+  { label: "=", color: "#14532d", span: 2 },
 ];
 
-const OPERATORS = "+−×÷";
-
 export default function App() {
-  // State lưu biểu thức hiện tại, ví dụ "7+8×2"
+  // State lưu biểu thức hiện tại, ví dụ "7+8*2"
   const [expression, setExpression] = useState("");
 
   function handlePress(label) {
-    setExpression((prev) => {
-      // Sau khi báo lỗi, phím tiếp theo bắt đầu lại biểu thức mới
-      const expr = prev === "Lỗi" ? "" : prev;
-
-      if (label === "C") return "";
-      if (label === "Del") return expr.slice(0, -1);
-      if (label === "=") {
-        if (expr === "") return "";
-        // Bỏ toán tử thừa ở cuối (vd "7+" coi như "7") rồi tính kết quả
-        const result = calculate(expr.replace(new RegExp(`[${OPERATORS}]+$`), ""));
-        return result === null ? "Lỗi" : String(result);
-      }
-      if (OPERATORS.includes(label)) {
-        if (expr === "") return expr; // toán tử không được đứng đầu
-        if (OPERATORS.includes(expr.at(-1))) {
-          return expr.slice(0, -1) + label; // gõ 2 toán tử liền nhau → thay toán tử cũ
-        }
-      }
-      return expr + label;
-    });
+    if (expression === "Lỗi" && label !== "C") return; // đang lỗi → chỉ C có tác dụng
+    if (label === "C") return setExpression("");
+    if (label === "Del") return setExpression(expression.slice(0, -1));
+    if (label === "=") return setExpression(String(calculate(expression)));
+    // Không cho toán tử đứng đầu hay 2 toán tử liền nhau
+    if ("+-*/".includes(label) && ("+-*/".includes(expression.at(-1)) || expression === ""))
+      return;
+    setExpression(expression + label);
   }
 
   return (

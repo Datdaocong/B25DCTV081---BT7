@@ -1,11 +1,8 @@
-// Display – màn hình máy tính: nhận biểu thức / kết quả hiện tại
-// qua props và hiển thị lên giao diện
+// Display – màn hình máy tính: nhận biểu thức / kết quả qua props
 export default function Display({ expression }) {
   return (
     <div className="display">
-      <span className="display-text">
-        {expression === "" ? "0" : expression}
-      </span>
+      <span className="display-text">{expression || "0"}</span>
     </div>
   );
 }
