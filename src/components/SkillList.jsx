@@ -1,17 +1,17 @@
 export default function SkillList({ skills }) {
   return (
-    <ul className="skill-list">
-      {skills.map((skill) => (
-        <li className="skill" key={skill.name}>
-          <div className="skill-head">
-            <span>{skill.name}</span>
-            <span className="skill-percent">{skill.level}%</span>
+    <div>
+      {skills.map((s) => (
+        <div className="skill" key={s.name}>
+          <div className="skill-info">
+            <span>{s.name}</span>
+            <span>{s.level}%</span>
           </div>
-          <div className="skill-bar">
-            <div className="skill-bar-fill" style={{ width: `${skill.level}%` }} />
+          <div className="bar">
+            <div className="fill" style={{ width: s.level + "%" }} />
           </div>
-        </li>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }
