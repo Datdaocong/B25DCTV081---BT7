@@ -1,10 +1,6 @@
-export default function Button({ label, color, span = 1, onPress }) {
+export default function Button({ label, color, onPress }) {
   return (
-    <button
-      className="btn"
-      style={{ background: color, gridColumn: `span ${span}` }}
-      onClick={() => onPress(label)}
-    >
+    <button style={{ background: color }} onClick={() => onPress(label)}>
       {label}
     </button>
   );

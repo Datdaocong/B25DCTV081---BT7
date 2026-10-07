@@ -1,10 +1,5 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
-  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-  background: #eef1f5;
-  color: #1f2937;
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
 }

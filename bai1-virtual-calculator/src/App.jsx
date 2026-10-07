@@ -1,56 +1,67 @@
 import { useState } from "react";
 import Display from "./components/Display.jsx";
 import Button from "./components/Button.jsx";
-import { calculate } from "./calculate.js";
 import "./App.css";
 
-const KEYS = [
-  { label: "C", color: "#e03131", span: 2 },
-  { label: "Del", color: "#6b7280" },
-  { label: "/", color: "#1d7a3e" },
-  { label: "7", color: "#2fb344" },
-  { label: "8", color: "#2fb344" },
-  { label: "9", color: "#2fb344" },
-  { label: "*", color: "#1d7a3e" },
-  { label: "4", color: "#2fb344" },
-  { label: "5", color: "#2fb344" },
-  { label: "6", color: "#2fb344" },
-  { label: "-", color: "#1d7a3e" },
-  { label: "1", color: "#2fb344" },
-  { label: "2", color: "#2fb344" },
-  { label: "3", color: "#2fb344" },
-  { label: "+", color: "#1d7a3e" },
-  { label: "0", color: "#2fb344", span: 2 },
-  { label: "=", color: "#14532d", span: 2 },
-];
+function calculate(expr) {
+  const numbers = expr.split(/[+\-*/]/).map(Number);
+  const ops = expr.match(/[+\-*/]/g) || [];
+  let result = numbers[0];
+  for (let i = 0; i < ops.length; i++) {
+    if (ops[i] === "+") result += numbers[i + 1];
+    if (ops[i] === "-") result -= numbers[i + 1];
+    if (ops[i] === "*") result *= numbers[i + 1];
+    if (ops[i] === "/") result /= numbers[i + 1];
+  }
+  return result;
+}
 
 export default function App() {
   const [expression, setExpression] = useState("");
 
   function handlePress(label) {
-    if (expression === "Lỗi" && label !== "C") return;
-    if (label === "C") return setExpression("");
-    if (label === "Del") return setExpression(expression.slice(0, -1));
-    if (label === "=") return setExpression(String(calculate(expression)));
-    if ("+-*/".includes(label) && ("+-*/".includes(expression.at(-1)) || expression === ""))
-      return;
-    setExpression(expression + label);
+    if (label === "C") {
+      setExpression("");
+    } else if (label === "Del") {
+      setExpression(expression.slice(0, -1));
+    } else if (label === "=") {
+      const result = calculate(expression);
+      setExpression(isFinite(result) ? String(result) : "Lỗi");
+    } else {
+      setExpression(expression + label);
+    }
   }
 
   return (
     <div className="calculator">
-      <h1 className="calculator-title">Virtual Calculator</h1>
+      <h1>Virtual Calculator</h1>
       <Display expression={expression} />
-      <div className="keypad">
-        {KEYS.map((key) => (
-          <Button
-            key={key.label}
-            label={key.label}
-            color={key.color}
-            span={key.span}
-            onPress={handlePress}
-          />
-        ))}
+      <div className="row">
+        <Button label="C" color="red" onPress={handlePress} />
+        <Button label="Del" color="gray" onPress={handlePress} />
+        <Button label="/" color="darkgreen" onPress={handlePress} />
+      </div>
+      <div className="row">
+        <Button label="7" color="green" onPress={handlePress} />
+        <Button label="8" color="green" onPress={handlePress} />
+        <Button label="9" color="green" onPress={handlePress} />
+        <Button label="*" color="darkgreen" onPress={handlePress} />
+      </div>
+      <div className="row">
+        <Button label="4" color="green" onPress={handlePress} />
+        <Button label="5" color="green" onPress={handlePress} />
+        <Button label="6" color="green" onPress={handlePress} />
+        <Button label="-" color="darkgreen" onPress={handlePress} />
+      </div>
+      <div className="row">
+        <Button label="1" color="green" onPress={handlePress} />
+        <Button label="2" color="green" onPress={handlePress} />
+        <Button label="3" color="green" onPress={handlePress} />
+        <Button label="+" color="darkgreen" onPress={handlePress} />
+      </div>
+      <div className="row">
+        <Button label="0" color="green" onPress={handlePress} />
+        <Button label="=" color="darkgreen" onPress={handlePress} />
       </div>
     </div>
   );
